@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kopi Intention</title>
+    <title>KODPI</title>
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,15 +16,24 @@
     <!-- Feather Icons-->
     <script src="https://unpkg.com/feather-icons"></script>
 
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="fontawesome/fontawesome-free-6.5.1-web/css/all.css">
+
     <!-- MyStyle-->
     <link rel="stylesheet" href="css/style.css" />
+
+    <!-- AlpineJS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- App -->
+    <script src="src/app.js" async></script>
   </head>
   <body>
     <!--navbar start-->
 
     <nav class="navbar">
       <a href="#" class="navbar-logo"
-        ><i>Intention</i><span> <i>Informatics</i></span
+        ><i>KODPI</i><span> <i>Informatics</i></span
         >.</a
       >
 
@@ -32,14 +41,80 @@
         <a href="#home">Home</a>
         <a href="#about">Tentang kami</a>
         <a href="#menu">Menu</a>
+        <a href="#products">Produk</a>
         <a href="#contact">Kontak</a>
       </div>
 
-      <div class="navbar-extra">
-        <a href="#" id="search"><i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+      <div class="navbar-extra" x-data>
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+        </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
+
+      <!-- Search form start -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here...">
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+
+      <!-- Search form end -->
+
+      <!-- Shopping cart start -->
+      <div class="shopping-cart" x-data>
+        <template x-for="(item, index) in $store.cart.items" x-key="index">
+          <div class="cart-item">
+            <img :src="`img/products/${item.img}`" :alt="item.name">
+            <div class="item-detail">
+              <h3 x-text="item.name"></h3>
+              <div class="item-price">
+                <span x-text="rupiah(item.price)"></span> &times;
+                <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
+                <span x-text="item.quantity"></span>
+                <button id="add" @click="$store.cart.add(item)">&plus;</button>&equals;
+                <span x-text="rupiah(item.total)"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Keranjang Masih Kosong</h4>
+        <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
+
+        <div class="form-container" x-show="$store.cart.items.length">
+          <form action="" id="checkoutForm">
+            <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
+            <input type="hidden" name="total" x-model="$store.cart.total">
+
+            <h5>Customer detail</h5>
+
+            <label for="name">
+              <span>Name</span>
+              <input type="text" name="name" id="name">
+            </label>
+
+            <label for="email">
+              <span>Email</span>
+              <input type="email" name="email" id="email">
+            </label>
+
+            <label for="phone">
+              <span>Phone</span>
+              <input type="number" name="phone" id="phone" autocomplete="off">
+            </label>
+
+            <button class="checkout-button disabled" type="submit" id="checkout-button" value="checkout">Checkout</button>
+          </form>
+        </div>
+      </div>
+
+
+
+
+      <!-- Shopping cart end -->
+
+
     </nav>
 
     <!-- navbar end-->
@@ -50,7 +125,6 @@
       <main class="content">
         <h1>KODPI<br><span>(Koding sambil Ngopi)</span></h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui.</p>
-        <a href="#" class="cta">Beli Sekarang</a>
       </main>
     </section>
 
@@ -112,6 +186,43 @@
     <!-- Menu section end -->
 
 
+    <!-- Product section start -->
+    <section class="products" id="products" x-data="products">
+      <h2><span>Produk Unggulan</span> kami</h2>
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti magni explicabo excepturi alias culpa. Quis?</p>
+
+      <div class="row">
+        <template x-for="(item, index) in items" x-key="index">
+          <div class="product-card">
+            <div class="product-icons">
+
+              <a href="#" @click.prevent="$store.cart.add(item)"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a href="#" class="item-detail-button"><i class="fa-regular fa-eye"></i></a>
+
+            </div>
+            <div class="product-image">
+              <img :src="`img/products/${item.img}`" :alt="item.name">
+            </div>
+            <div class="product-content">
+              <h3 x-text="item.name"></h3>
+              <div class="product-stars">
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+              <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </section>
+
+
+
+    <!-- Product section end -->
+
     <!-- Contact Section start -->
     <section id="contact" class="contact">
       <h2><span>Kontak</span> Kami</h2>
@@ -145,9 +256,9 @@
     <!-- footer start -->
     <footer>
       <div class="socials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="github"></i></a>
-        <a href="#"><i data-feather="linkedin"></i></a>
+        <a href="https://www.instagram.com/nbyl.26"><i data-feather="instagram"></i></a>
+        <a href="https://github.com/nbyl26"><i data-feather="github"></i></a>
+        <a href="https://www.linkedin.com/in/nabilpasha"><i data-feather="linkedin"></i></a>
       </div>
 
       <div class="links">
@@ -164,6 +275,34 @@
 
 
     <!-- footer end -->
+
+
+    <!-- Modal box item detail start -->
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="img/products/1.jpg" alt="Produk 1">
+          <div class="product-content">
+            <h3>Product 1</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro soluta esse accusantium consectetur iste sed quasi, cumque aperiam neque recusandae! Ea dolore numquam magnam voluptatibus?</p>
+            <div class="product-stars">
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+            </div>
+            <div class="product-price">
+              IDR 30K <span>IDR 55K</span>
+            </div>
+            <a href="#"><i data-feather="shopping-cart"></i><span>add to cart</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal box item detail end -->
 
 
     <!-- fether icons -->
