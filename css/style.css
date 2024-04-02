@@ -459,6 +459,8 @@ body {
   color: var(--primary);
 }
 
+
+
 .products .product-stars .star-full {
   fill: var(--primary);
 }
@@ -469,10 +471,11 @@ body {
 }
 
 .products .product-price span {
-  text-decoration: line-through;
-  font-weight: lighter;
-  font-size: 1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-decoration: none; /* Menghilangkan garis */
 }
+
 
 
 

@@ -3,9 +3,9 @@ document.addEventListener('alpine:init', () => {
         items: [
             {id: 1, name: 'Akam Gabruk', img:'1.jpg', price: 20000  },
             {id: 2, name: 'Anon', img:'2.jpg', price: 25000  },
-            {id: 3, name: 'Rii', img:'3.jpg', price: 23000  },
-            {id: 4, name: 'Ditzz', img:'4.jpg', price: 20000  },
-            {id: 5, name: 'Bundle Alok', img:'5.jpg', price: 99  },
+            {id: 3, name: 'Ry', img:'3.jpg', price: 23000  },
+            {id: 4, name: 'Yuma', img:'4.jpg', price: 20000  },
+            {id: 6, name: 'Nbyl', img:'5.jpg', price: "Tidak dijual terlalu mahal" },
         ],
     }));
 
@@ -110,9 +110,13 @@ Terima Kasih.`;
 
 // Konversi ke rupiah
 const rupiah = (number) => {
-    return new Intl.NumberFormat('id-ID', {
-        style: 'currency',
-        currency: 'IDR',
-        minimumFractionDigits: 0
-    }).format(number);
+    if (isNaN(number)) {
+        return "Tidak Dijual";
+    } else {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(number);
+    }
 };

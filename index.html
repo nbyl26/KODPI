@@ -33,8 +33,8 @@
 
     <nav class="navbar">
       <a href="#" class="navbar-logo"
-        ><i>KODPI</i><span> <i>Informatics</i></span
-        >.</a
+        ><i>- KODPI</i><span> <i>GDSC</i></span
+        > -</a
       >
 
       <div class="navbar-nav">
@@ -124,7 +124,7 @@
     <section class="hero" id="home">
       <main class="content">
         <h1>KODPI<br><span>(Koding sambil Ngopi)</span></h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui.</p>
+        <p></p>
       </main>
     </section>
 
@@ -140,8 +140,8 @@
           <img src="img/tentang-kami.jpg" alt="Tentang Kami">
         </div>
         <div class="content">
-          <h3>Kenapa memilih kopi kami</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo fuga nisi, maxime hic aliquid iste quas. Magnam numquam voluptatem esse!</p>
+          <h3>Kenapa memilih produk kami....?</h3>
+          <p>Karena produk kami ini paling enak sedunia bejir, ga ada lawan coyy, langsung saja dicoba auto ketagihan sampai mabuk, disarankan untuk anak dibawah umur dan ibu hamil</p>
 
         </div>
       </div>
@@ -153,29 +153,34 @@
     <!-- Menu section start -->
     <section id="menu" class="menu">
       <h2><span>Menu</span> Kami</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi hic commodi autem facere deleniti exercitationem.</p>
+      <p>Silahkan di beli produk kami dijamin 99.9% aman insyaallah *kalo sedikit, kalo banyak mohon maaf sudah diluar tanggung jawab kami, hehehe...</p>
 
 
       <div class="row">
         <div class="menu-card">
           <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-          <h3 class="menu-card-title">- Espresso -</h3>
+          <h3 class="menu-card-title">- Kopi anti melarat -</h3>
           <p class="menu-card-price">IDR 15K</p>
         </div>
         <div class="menu-card">
           <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-          <h3 class="menu-card-title">- Espresso -</h3>
+          <h3 class="menu-card-title">- Kopi anti gagal nyaleg-</h3>
           <p class="menu-card-price">IDR 15K</p>
         </div>
         <div class="menu-card">
           <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-          <h3 class="menu-card-title">- Espresso -</h3>
+          <h3 class="menu-card-title">- Kopi anti miskin -</h3>
           <p class="menu-card-price">IDR 15K</p>
         </div>
         <div class="menu-card">
           <img src="img/menu/1.jpg" alt="Espresso" class="menu-card-img">
-          <h3 class="menu-card-title">- Espresso -</h3>
+          <h3 class="menu-card-title">- Kopi anti Lose Streak -</h3>
           <p class="menu-card-price">IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <img src="img/menu/2.jpg" alt="Espresso" class="menu-card-img">
+          <h3 class="menu-card-title">- Reaksi jujur pembeli -</h3>
+          <p class="menu-card-price"></p>
         </div>
 
       </div>
@@ -189,16 +194,16 @@
     <!-- Product section start -->
     <section class="products" id="products" x-data="products">
       <h2><span>Produk Unggulan</span> kami</h2>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti magni explicabo excepturi alias culpa. Quis?</p>
-
+      <p></p>
+    
       <div class="row">
         <template x-for="(item, index) in items" x-key="index">
           <div class="product-card">
             <div class="product-icons">
-
+    
               <a href="#" @click.prevent="$store.cart.add(item)"><i class="fa-solid fa-cart-shopping"></i></a>
               <a href="#" class="item-detail-button"><i class="fa-regular fa-eye"></i></a>
-
+    
             </div>
             <div class="product-image">
               <img :src="`img/products/${item.img}`" :alt="item.name">
@@ -212,7 +217,7 @@
                 <i class="fa-regular fa-star"></i>
                 <i class="fa-regular fa-star"></i>
               </div>
-              <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+              <div class="product-price"><span x-text="item.price === 'Tidak dijual terlalu mahal' ? item.price : rupiah(item.price)"></span></div>
             </div>
           </div>
         </template>
@@ -226,7 +231,7 @@
     <!-- Contact Section start -->
     <section id="contact" class="contact">
       <h2><span>Kontak</span> Kami</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, cupiditate.</p>
+      <p></p>
 
       <div class="row">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.555695194151!2d104.65086519999998!3d-3.210673199999989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e3bbd8cce40ed61%3A0xaf384d3c7c49d9e!2sRIZKY%20KOST!5e0!3m2!1sid!2sid!4v1709372478328!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
@@ -269,7 +274,7 @@
       </div>
 
       <div class="credit">
-        <p>Created by <a href="">Nabilpasha</a>. | &copy; 2024.</p>
+        <p>Created by <a href="">Nbyl</a> | &copy; 2024.</p>
       </div>
     </footer>
 
