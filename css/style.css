@@ -400,6 +400,11 @@ body {
   width: 80%;
 }
 
+.menu .row .menu-card .menu-card-img2{
+  border-radius: 0;
+  width: 80%;
+}
+
 .menu .row .menu-card .menu-card title{
   margin: 1rem auto 0.5rem;
 }
