@@ -13,7 +13,9 @@ Halaman ini mencakup peta lokasi kafe KODPI yang terintegrasi dengan Google Maps
 Fitur search yang memudahkan pengguna mencari jenis kopi yang diinginkan dengan cepat.
 6. Keranjang Belanja
 Pengguna dapat menambahkan produk ke keranjang belanja untuk kemudian melakukan pemesanan dalam satu kali transaksi.
-7. Footer
+7. Detail Produk
+Pengguna dapat melihat secara detail seperti deskripsi dan harga produk.
+9. Footer
 Di bagian footer, pengguna bisa menemukan tautan ke akun media sosial kami di Instagram, GitHub, dan LinkedIn, serta navigasi ke halaman utama seperti Menu, Tentang Kami, dan Kontak Kami.
 
 Teknologi yang Digunakan:
